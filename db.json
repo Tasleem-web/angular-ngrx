@@ -1,0 +1,16 @@
+{
+  "books": [
+    {
+      "id": 2,
+      "title": "TypeScript",
+      "author": "Microsoft",
+      "cost": 400
+    },
+    {
+      "id": 3,
+      "title": "JavaScript",
+      "author": "Brendan Eich",
+      "cost": 100
+    }
+  ]
+}

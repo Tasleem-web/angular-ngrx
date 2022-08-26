@@ -1,0 +1,62 @@
+<div class="container">
+  <legend>Add a New book</legend>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="Please Enter Title"
+      [(ngModel)]="bookForm.title"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="author" class="form-label">Author</label>
+    <input
+      type="text"
+      class="form-control"
+      id="author"
+      placeholder="Please Enter Author"
+      [(ngModel)]="bookForm.author"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="cost" class="form-label">Cost</label>
+    <input
+      type="number"
+      class="form-control"
+      id="cost"
+      placeholder="Please Enter Cost"
+      [(ngModel)]="bookForm.cost"
+    />
+  </div>
+  <div class="mb-3">
+    <button type="button" class="btn btn-primary" (click)="save()">
+      Submit
+    </button>
+  </div>
+</div>
+
+<div class="position-fixed top-0 end-0">
+  <div
+    class="toast"
+    [class.show]="isSubmitted"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="..." />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="text-muted">11 mins ago</small>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+        (click)="isSubmitted = false"
+      ></button>
+    </div>
+    <div class="toast-body">Hello, world! This is a toast message.</div>
+  </div>
+</div>

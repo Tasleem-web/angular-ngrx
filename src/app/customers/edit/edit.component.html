@@ -1,0 +1,38 @@
+<div class="container">
+  <legend>Update book</legend>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="Please Enter Title"
+      [(ngModel)]="bookForm.title"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="author" class="form-label">Author</label>
+    <input
+      type="text"
+      class="form-control"
+      id="author"
+      placeholder="Please Enter Author"
+      [(ngModel)]="bookForm.author"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="cost" class="form-label">Cost</label>
+    <input
+      type="number"
+      class="form-control"
+      id="cost"
+      placeholder="Please Enter Cost"
+      [(ngModel)]="bookForm.cost"
+    />
+  </div>
+  <div class="mb-3">
+    <button type="button" class="btn btn-primary" (click)="Update()">
+      Update
+    </button>
+  </div>
+</div>
