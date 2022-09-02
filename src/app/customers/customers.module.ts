@@ -8,9 +8,11 @@ import { bookReducer } from './store/books.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { BooksEffect } from './store/books.effects';
 import { AddComponent } from './add/add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { EmptyComponent } from './empty/empty.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -18,12 +20,15 @@ import { EmptyComponent } from './empty/empty.component';
     HomeComponent,
     AddComponent,
     EditComponent,
-    EmptyComponent
+    EmptyComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     CustomersRoutingModule,
+    ReactiveFormsModule,
     StoreModule.forFeature("myBooks", bookReducer),
     EffectsModule.forFeature([BooksEffect])
   ]
