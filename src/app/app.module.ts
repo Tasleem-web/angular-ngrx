@@ -9,6 +9,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { appReducer } from './shared/store/app.reducer';
+import { AuthGuardService } from './shared/auth-guard.service';
+import { AuthService } from './shared/auth.service';
+import { ProductService } from './shared/product.service';
+import { CanDeactivateGuard } from './shared/auth-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,7 @@ import { appReducer } from './shared/store/app.reducer';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService, ProductService, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

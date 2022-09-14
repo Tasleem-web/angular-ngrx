@@ -1,56 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { setAPISuccess } from 'src/app/shared/store/app.action';
-import { appSelector } from 'src/app/shared/store/app.selector';
-import { Appstate } from 'src/app/shared/store/appstate';
-import { Books } from '../store/books';
-import { deleteBook, deleteBookSuccess, invokeBooksAPI } from '../store/books.action';
-import { selectBooks } from '../store/books.selector';
-
-declare var window: any;
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
+import { IDeactivateComponent } from 'src/app/shared/IDeactivateComponent';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements IDeactivateComponent {
 
   constructor(
-    private _store: Store,
-    private _appStore: Store<Appstate>
+    private _router: Router,
+    private _authService: AuthService
   ) { }
+  title = 'Routing Module - Route Guards Demo';
 
-  books$ = this._store.pipe(select(selectBooks));
-  totalBooks: any;
-
-
-  deleteModal: any;
-  idToDelete: number = 0;
-
-  ngOnInit(): void {
-    this.books$.subscribe(data => {
-      this.totalBooks = data
-    });
-
-    this.deleteModal = new window.bootstrap.Modal(document.getElementById('deleteModal'));
-    this._store.dispatch(invokeBooksAPI());
+  logout() {
+    this._authService.logoutUser();
+    this._router.navigate(['books/dashboard'])
   }
 
-  openModal(id: number) {
-    this.idToDelete = id;
-    this.deleteModal.show();
+  leaveCurrentModule(): void {
+
+    this._router.navigate(['books/dashboard'])
   }
 
-
-  confirmDelete() {
-    this._store.dispatch(deleteBook({ id: this.idToDelete }));
-    let appStatus$ = this._appStore.pipe(select(appSelector));
-    appStatus$.subscribe((data) => {
-      if (data.apiStatus == 'Success') {
-        this._appStore.dispatch(setAPISuccess({ appStatus: { apiStatus: '', apiResponseMessage: '' } }));
-        this.deleteModal.hide();
-      }
-    })
+  canExit(): boolean {
+    if (confirm("Do you wish to Please confirm")) {
+      return true
+    } else {
+      return false
+    }
   }
 }

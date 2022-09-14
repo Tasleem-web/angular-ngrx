@@ -13,6 +13,9 @@ import { EditComponent } from './edit/edit.component';
 import { EmptyComponent } from './empty/empty.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProductComponent } from './product/product.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { RegisterComponent } from './register/register.component';
     EditComponent,
     EmptyComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductComponent,
+    DashboardComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
